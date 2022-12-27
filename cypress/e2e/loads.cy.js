@@ -1,6 +1,6 @@
 
-describe('empty spec', () => {
-  it('passes', () => {
+describe('load landing page spec', () => {
+  it('loads', () => {
     cy.visit('/')
     cy.get('.status__time')
         .should('contain.text', '00:03');
