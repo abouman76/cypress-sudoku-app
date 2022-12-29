@@ -1,4 +1,3 @@
-export{}
 describe('play mode', () => {
    beforeEach(() => {
        cy.visit('/')
@@ -84,7 +83,11 @@ describe('play mode', () => {
                             .not('.game__cell--filled')
                             .should('have.length.greaterThan', 40)
                             .its('length')
-                            .as('hardN');
+                            .as('hardN')
+                            .then(function () {
+                                expect(this.easyN, 'easy number').to.be.lessThan(this.mediumN)
+                                expect(this.mediumN, 'medium number').to.be.lessThan(this.hardN)
+                            });
 
        });
    });
