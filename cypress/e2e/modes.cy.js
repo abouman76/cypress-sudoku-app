@@ -1,9 +1,9 @@
-describe('play mode', () => {
+describe('Chapter 9: play mode', () => {
    beforeEach(() => {
        cy.visit('/')
    });
 
-   context('most written out steps', () => {
+   context('simplistic way', () => {
        it('Shows a different number of empty cells', () => {
            // Confirm the current mode is "easy"
            cy.get('select[name=status__difficulty-select]')
@@ -35,7 +35,7 @@ describe('play mode', () => {
            cy.getByName("Easy")
        })
    });
-   context('less written out, little more complex steps', () => {
+   context('little more complex steps', () => {
        it('Show different number of empty cells, little more complicated code', () => {
           cy.get('select[name=status__difficulty-select')
               .should('have.value', 'Easy');
