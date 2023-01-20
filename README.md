@@ -1,4 +1,5 @@
-# sudoku
+# sudoku 
+[![CI](https://github.com/abouman76/cypress-sudoku-app/actions/workflows/ci-test.yml/badge.svg)](https://github.com/abouman76/cypress-sudoku-app/actions/workflows/ci-test.yml)
 
 A Sudoku game in React!
 
