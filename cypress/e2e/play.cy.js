@@ -9,8 +9,8 @@ describe('Sudoku play with fixture', () => {
           },
       })
 
-       cy.get('.game__cell:contains(0)')
-           .should('have.length', 3);
+       // cy.get('.game__cell:contains(0)')
+       //     .should('have.length', 3);
 
        cy.get('.game__cell:contains(0)')
            .should('have.length', 3)
@@ -19,6 +19,7 @@ describe('Sudoku play with fixture', () => {
                cy.get('.game__cell')
                    .eq(index)
                    .click();
+
                cy.contains('.status__number', solved[index])
                    .click();
            }
