@@ -2,7 +2,7 @@ describe("Hint", () => {
     beforeEach(() => {
         cy.visit('/')
     });
-    it('should fill all empty cells and solv the Sudoku', () => {
+    it('should fill all empty cells and solve the Sudoku', () => {
         cy.get('.game__cell.game__cell--filled')
             .should('have.length', 45);
 

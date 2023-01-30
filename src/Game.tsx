@@ -7,6 +7,7 @@ import { Footer } from './components/layout/Footer';
 import { getUniqueSudoku } from './solver/UniqueSudoku';
 import { useSudokuContext } from './context/SudokuContext';
 
+declare const window: any;
 /**
  * Game is the main React component.
  */
@@ -43,7 +44,12 @@ export const Game: React.FC<{}> = () => {
    * Creates a new game and initializes the state variables.
    */
   function _createNewGame(e?: React.ChangeEvent<HTMLSelectElement>) {
-    let [ temporaryInitArray, temporarySolvedArray ] = getUniqueSudoku(difficulty, e);
+    let [ temporaryInitArray, temporarySolvedArray ] =
+    window.starting && window.solved ? [window.starting, window.solved]
+      : getUniqueSudoku(difficulty, e);
+
+
+    // console.log(temporarySolvedArray);
 
     setInitArray(temporaryInitArray);
     setGameArray(temporaryInitArray);
@@ -54,6 +60,8 @@ export const Game: React.FC<{}> = () => {
     setHistory([]);
     setWon(false);
   }
+
+
 
   /**
    * Checks if the game is solved.
