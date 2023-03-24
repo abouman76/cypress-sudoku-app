@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Chapter 9: play mode', () => {
    beforeEach(() => {
        cy.visit('/')

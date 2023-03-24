@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { starting, solved } from '../fixtures/sudoku.json'
 
 describe('Sudoku play with fixture', () => {
@@ -24,7 +26,8 @@ describe('Sudoku play with fixture', () => {
                    .click();
            }
        });
-       cy.get('.overlay__text')
+
+      cy.get('.overlay__text')
            .should('have.text', 'You solved it!')
            .and('be.visible');
    });

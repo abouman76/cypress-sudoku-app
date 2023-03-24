@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Chapter 5 and 11: Timer',() => {
     beforeEach(() => {
         cy.visit('/')

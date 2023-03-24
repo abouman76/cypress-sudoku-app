@@ -1,3 +1,5 @@
+/// <reference types="cypress" />s
+
 describe("Hint", () => {
     beforeEach(() => {
         cy.visit('/')

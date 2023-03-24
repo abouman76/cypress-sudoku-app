@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 
 describe('load landing page spec', () => {
   it('loads', () => {
