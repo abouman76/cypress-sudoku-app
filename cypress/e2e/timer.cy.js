@@ -5,13 +5,16 @@ describe('Chapter 5 and 11: Timer', () => {
     cy.visit('/')
   });
 
-  it('Ch 5: show 3 seconds', () => {
-    cy.contains('.status__time', '00:01', { timeout: 11000 })
-    cy.contains('.status__time', '00:02', { timeout: 11000 })
-    cy.contains('.status__time', '00:03', { timeout: 11000 })
+  it('Ch 5: show timer for 6 seconds', () => {
+    cy.contains('.status__time', '00:01', { timeout: 7000 })
+    cy.contains('.status__time', '00:02', { timeout: 7000 })
+    cy.contains('.status__time', '00:03', { timeout: 7000 })
+    cy.contains('.status__time', '00:04', { timeout: 7000 })
+    cy.contains('.status__time', '00:05', { timeout: 7000 })
+    cy.contains('.status__time', '00:06', { timeout: 7000 })
   });
 
-  it.only('it shows 10 seconds with for loop', () => {
+  it('it shows 10 seconds with for loop', () => {
     for (let i = 0; i < 10; i++) {
       cy.contains('.status__time', `00:0${i}`)
     }
