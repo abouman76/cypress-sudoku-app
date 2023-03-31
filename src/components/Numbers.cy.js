@@ -56,7 +56,7 @@ context.skip('Component testing - chapter 17', () => {
  * Import sudokuContext
  */
 
-context.skip('Component testing and calls onClick number - chapter 18', () => {
+context('Component testing and calls onClick number - chapter 18', () => {
   describe('Numbers with using cy.stub', () => {
     it('Should show the numbers from the numbers component', { viewportHeight: 1000, viewportWidth: 1000 }, () => {
       cy.mount(
@@ -101,6 +101,7 @@ context.skip('Component testing and calls onClick number - chapter 18', () => {
  * Mount the component by 'wrapping' the SudokuContext.Provider into it
  * give this a value of the number that you want to select and colorize blue
  * Then outside the mount, do assertions you want to do
+ * check if the context.Provider has an export statement
  */
 
 context('Component testing MOUNT with .Provider - chapter 19', () => {
