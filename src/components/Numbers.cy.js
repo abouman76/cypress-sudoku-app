@@ -23,6 +23,7 @@
 import React from 'react'
 import { Numbers } from './Numbers'
 import '../App.css'
+import { SudokuContext } from '../context/SudokuContext'
 
 context.skip('Component testing - chapter 17', () => {
   describe('Numbers', () => {
@@ -48,6 +49,8 @@ context.skip('Component testing - chapter 17', () => {
  * to call props the onClick is being used.
  * Create or get the onClick and then use cy.stub()
  * When a number is clicked, the stub should be executed
+ * The TRICK here is to control the context (sudokuContext)
+ * Import sudokuContext
  */
 
 context('Component testing and calls onClick number - chapter 18', () => {
@@ -70,4 +73,38 @@ context('Component testing and calls onClick number - chapter 18', () => {
         .should('have.been.called');
     });
   });
+});
+
+/**
+ * The numbers comp shows the numbers the user can enter
+ * User clicks a number and is shown as selected by blue coloring
+ * 
+ * TEST:
+ * Confirm the selected number is really working
+ * write a component test
+ * This component test creates a test React context(SudokuContext) and sets is value property
+ * to have the selected number we expect to find.
+ * Mount the component by 'wrapping' the SudokuContext.Provider into it
+ * give this a value of the number that you want to select and colorize blue
+ * Then outside the mount, do assertions you want to do
+ */
+
+context.skip('Component testing MOUNT with .Provider - chapter 19', () => {
+  describe('Select number', () => {
+    it('Should show the selected number', () => {
+      cy.mount(
+        <SudokuContext.Provider value={{ numberSelected: '7' }}>
+          <div className='innercontainer'>
+            <section className='status'>
+              <Numbers onClickNumber={cy.stub().as('clickNumber')} />
+            </section>
+          </div>
+        </SudokuContext.Provider>
+      )
+
+      // do assertions to check for the correct number, if selected and blue colored?
+
+    });
+  });
 })
+
