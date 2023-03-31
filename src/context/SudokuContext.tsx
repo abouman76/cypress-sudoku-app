@@ -21,7 +21,7 @@ type SudokuContextProps = {
 };
 
 
-const SudokuContext = createContext<SudokuContextProps>({ numberSelected: '0', setNumberSelected: () => {},
+export const SudokuContext = createContext<SudokuContextProps>({ numberSelected: '0', setNumberSelected: () => {},
                                                           gameArray: [], setGameArray: () => {},
                                                           difficulty: 'Easy', setDifficulty: () => {},
                                                           timeGameStarted: moment(), setTimeGameStarted: () => {},

@@ -1,5 +1,8 @@
 /// <reference types="cypress" />
 
+// url: https://glebbahmutov.com/blog/open-source-visual-testing-of-components/?amp=1
+
+
 /**
  * See how to validate the 'Numbers' and 'props' component via component testing
  * Start cypress with npx cypress open
@@ -53,7 +56,7 @@ context.skip('Component testing - chapter 17', () => {
  * Import sudokuContext
  */
 
-context('Component testing and calls onClick number - chapter 18', () => {
+context.skip('Component testing and calls onClick number - chapter 18', () => {
   describe('Numbers with using cy.stub', () => {
     it('Should show the numbers from the numbers component', { viewportHeight: 1000, viewportWidth: 1000 }, () => {
       cy.mount(
@@ -73,6 +76,17 @@ context('Component testing and calls onClick number - chapter 18', () => {
         .should('have.been.called');
     });
   });
+
+  describe('Show all numbers', () => {
+    const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    it('Should show all numbers', () => {
+      cy.mount(<Numbers />)
+      numbersArray.forEach(num => {
+        cy.contains('.status__number', num);
+      });
+    });
+  });
 });
 
 /**
@@ -89,7 +103,7 @@ context('Component testing and calls onClick number - chapter 18', () => {
  * Then outside the mount, do assertions you want to do
  */
 
-context.skip('Component testing MOUNT with .Provider - chapter 19', () => {
+context('Component testing MOUNT with .Provider - chapter 19', () => {
   describe('Select number', () => {
     it('Should show the selected number', () => {
       cy.mount(
@@ -103,7 +117,8 @@ context.skip('Component testing MOUNT with .Provider - chapter 19', () => {
       )
 
       // do assertions to check for the correct number, if selected and blue colored?
-
+      cy.contains('.status__number', '7')
+        .should('have.class', 'status__number--selected');
     });
   });
 })
