@@ -3,8 +3,8 @@
 /**
  * Test the "HINT" element
  * - Get all cells
- * - filter the cells on 'not' the filled onces
- * - run an each loop for clicking on each not filled cell and wrap it
+ * - filter the cells on 'not' the filled ones
+ * - run an each 'loop' for clicking on each not filled cell and wrap it
  * - Inspect the 'hint' element to find the hint btn
  * - Add the action for the hint button to the test
  * - Check for message "you solved it"
@@ -16,7 +16,7 @@ describe("Hint", () => {
   });
   it('should fill all empty cells and solve the Sudoku', () => {
     cy.get('.game__cell.game__cell--filled')
-      .should('have.length', 45);
+      .should('have.length', 45); // the filled cells
 
     cy.get('.game__cell')
       .not('.game__cell--filled')
@@ -29,7 +29,7 @@ describe("Hint", () => {
           .click();
       });
 
-    // Do a check on the msg after completing
+    // Do a check on the solved msg after completing
     cy.get('.overlay__text')
       .should('have.text', 'You solved it!')
       .and('be.visible');
