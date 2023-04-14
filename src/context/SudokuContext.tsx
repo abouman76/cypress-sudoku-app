@@ -21,35 +21,37 @@ type SudokuContextProps = {
 };
 
 
-export const SudokuContext = createContext<SudokuContextProps>({ numberSelected: '0', setNumberSelected: () => {},
-                                                          gameArray: [], setGameArray: () => {},
-                                                          difficulty: 'Easy', setDifficulty: () => {},
-                                                          timeGameStarted: moment(), setTimeGameStarted: () => {},
-                                                          fastMode: false, setFastMode: () => {},
-                                                          cellSelected: -1, setCellSelected: () => {},
-                                                          initArray: [], setInitArray: () => {},
-                                                          won: false, setWon: () => {} });
+export const SudokuContext = createContext<SudokuContextProps>({
+  numberSelected: '0', setNumberSelected: () => { },
+  gameArray: [], setGameArray: () => { },
+  difficulty: 'Easy', setDifficulty: () => { },
+  timeGameStarted: moment(), setTimeGameStarted: () => { },
+  fastMode: false, setFastMode: () => { },
+  cellSelected: -1, setCellSelected: () => { },
+  initArray: [], setInitArray: () => { },
+  won: false, setWon: () => { }
+});
 
 type SudokuProviderProps = {
   children: React.ReactElement
 };
 
 export const SudokuProvider = ({ children }: SudokuProviderProps) => {
-  let [ numberSelected, setNumberSelected ] = useState<string>('0');
-  let [ gameArray, setGameArray ] = useState<string[]>([]);
-  let [ difficulty,setDifficulty ] = useState<string>('Easy');
-  let [ timeGameStarted, setTimeGameStarted ] = useState<moment.Moment>(moment());
-  let [ fastMode, setFastMode ] = useState<boolean>(false);
-  let [ cellSelected, setCellSelected ] = useState<number>(-1);
-  let [ initArray, setInitArray ] = useState<string[]>([]);
-  let [ won, setWon ] = useState<boolean>(false);
+  let [numberSelected, setNumberSelected] = useState<string>('0');
+  let [gameArray, setGameArray] = useState<string[]>([]);
+  let [difficulty, setDifficulty] = useState<string>('Easy');
+  let [timeGameStarted, setTimeGameStarted] = useState<moment.Moment>(moment());
+  let [fastMode, setFastMode] = useState<boolean>(false);
+  let [cellSelected, setCellSelected] = useState<number>(-1);
+  let [initArray, setInitArray] = useState<string[]>([]);
+  let [won, setWon] = useState<boolean>(false);
 
   return (
     <SudokuContext.Provider value={
       {
         numberSelected, setNumberSelected,
         gameArray, setGameArray,
-        difficulty,setDifficulty,
+        difficulty, setDifficulty,
         timeGameStarted, setTimeGameStarted,
         fastMode, setFastMode,
         cellSelected, setCellSelected,

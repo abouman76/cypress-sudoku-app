@@ -3,9 +3,12 @@ import React from 'react'
 import '../App.css'
 import { Game } from '../Game'
 import { SudokuProvider } from '../context/SudokuContext';
+import { WinContext, WinProvider } from '../context/WinContext';
 import { starting, solved } from '../../cypress/fixtures/sudoku.json'
 
 /**
+ * component test can be writen for and or by any level. F. ex the game.
+ * 
  * Just like the e2e test we can completely mount the game. By mounting the highest leve.
  * Highest level is in App.tsx game component
  * Now we can just test all like the regular e2e test, but only by mounting
@@ -21,9 +24,19 @@ describe('Game', () => {
     window.solved = solved
     cy.mount(
       <SudokuProvider>
-        <Game />
+        <WinContext.Provider
+          value={{
+            won: false,
+            setWon: cy.stub().as('setWon'),
+          }}
+        >
+          <Game />
+        </WinContext.Provider>
       </SudokuProvider>
     )
+
+    // cy.get('@setWon')
+    //   .should('have.been.calledWith', false)
 
     cy.get('.game__cell:contains(0)')
       .should('have.length', 3)
@@ -46,6 +59,10 @@ describe('Game', () => {
     });
 
     // check if the overlay with 'you solved it" text appears
+
+    // cy.get('@setWon')
+    //   .should('have.been.calledWith', true);
+
     cy.get('.overlay__text')
       .should('have.text', 'You solved it!')
       .and('be.visible');
