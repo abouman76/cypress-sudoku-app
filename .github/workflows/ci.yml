@@ -14,12 +14,12 @@ jobs:
       # and run all Cypress tests
 
       # component first
-      - name: Cypress run
+      - name: Cypress Component Test
         uses: cypress-io/github-action@v5
         with:
           component: true
       # e2e and set intall to false due to component test
-      - name: Cypress run
+      - name: Cypress e2e Test
         uses: cypress-io/github-action@v5
         with:
           install: false
