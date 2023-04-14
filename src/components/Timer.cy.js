@@ -29,14 +29,10 @@ describe('Wrap timer in provider and set data the component needs to use when mo
 
     cy.contains('00:01')
     cy.contains('00:02')
-    // cy.contains('11.40')
 
   });
 
-});
-
-describe.skip('Wrap timer in provider and set data the component needs to use when mounted', () => {
-  it('Sets the clock to the given value', () => {
+  it.skip('Sets the clock to the given value wrapping it into the provider', () => {
     const now = moment()
     const future = now.clone().add(700, 'seconds')
     cy.clock(future.toDate())
@@ -55,5 +51,10 @@ describe.skip('Wrap timer in provider and set data the component needs to use wh
     cy.contains('11.40')
 
   });
+
+});
+
+describe('writing a unit test for the formatTime fn in Timer.tsx', () => {
+ 
 
 });
