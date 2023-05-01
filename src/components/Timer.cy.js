@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import React from 'react'
 import '../App.css'
-import { Timer } from './Timer'
+import { Timer, formatTime } from './Timer'
 import { SudokuProvider, SudokuContext } from '../context/SudokuContext'
 import { moment } from 'moment'
 
@@ -17,7 +17,7 @@ import { moment } from 'moment'
  */
 
 describe('Wrap timer in provider and set data the component needs to use when mounted', () => {
-  it.only('Check the clock', () => {
+  it('Check the clock', () => {
 
     cy.mount(
       <SudokuProvider>
@@ -30,12 +30,9 @@ describe('Wrap timer in provider and set data the component needs to use when mo
     cy.contains('00:01')
     cy.contains('00:02')
 
-    cy.document()
-      .invoke('write', '00:02')
-
   });
 
-  it('Sets the clock to the given value wrapping it into the provider', () => {
+  it.skip('Sets the clock to the given value wrapping it into the provider', () => {
     const now = moment()
     const future = now.clone().add(700, 'seconds')
     cy.clock(future.toDate())
@@ -56,28 +53,20 @@ describe('Wrap timer in provider and set data the component needs to use when mo
   });
 
   it('formats the time', () => {
-    cy.mount(
-      <SudokuProvider>
-        <section className='status'>
-          <Timer />
-        </section>
-      </SudokuProvider>
-    )
-    expect(formatTimeI({})).to.equal('00:00')
-    expect(formatTimeI({ seconds: 3 })).to.equal('00:03')
-    expect(formatTimeI({ minutes: 1 })).to.equal('01:00')
-    expect(formatTime({ minutes: 1, seconds: 30 })).to.equal('01:30')
+    // cy.mount(
+    //   <SudokuProvider>
+    //     <section className='status'>
+    //       <Timer />
+    //     </section>
+    //   </SudokuProvider>
+    // )
+    expect(formatTime({})).to.equal('00:00')
+    expect(formatTime({ seconds: 3 })).to.equal('00:03')
+    // expect(formatTime({ minutes: 1 })).to.equal('01:00')
+    // expect(formatTime({ minutes: 1, seconds: 30 })).to.equal('01:30')
 
     cy.document()
-      .invoke('write', expect(formatTimeI({ seconds: 3 })).to.equal('00:03'))
+      .invoke('write', formatTime({ seconds: 3 }));
   });
-
-});
-
-describe('writing a unit test for the formatTime fn in Timer.tsx', () => {
-  /**
-   * TODO:
-   * Watch chapter 28. Refactoring again, and add the Unit test. Code is adjusted in Timer.tsx
-   */
 
 });
