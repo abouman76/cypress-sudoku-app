@@ -4,6 +4,9 @@ import moment from 'moment';
 
 //@ts-ignore
 export const formatTime = ({ hours, minutes, seconds }) => {
+  if (typeof seconds === 'undefined') {
+    return '00:00'
+  }
   let stringTimer = '';
 
   stringTimer += hours ? '' + hours + ':' : '';

@@ -17,7 +17,7 @@ import { moment } from 'moment'
  */
 
 describe('Wrap timer in provider and set data the component needs to use when mounted', () => {
-  it('Check the clock', () => {
+  it.only('Check the clock', () => {
 
     cy.mount(
       <SudokuProvider>
@@ -30,9 +30,12 @@ describe('Wrap timer in provider and set data the component needs to use when mo
     cy.contains('00:01')
     cy.contains('00:02')
 
+    cy.document()
+      .invoke('write', '00:02')
+
   });
 
-  it.skip('Sets the clock to the given value wrapping it into the provider', () => {
+  it('Sets the clock to the given value wrapping it into the provider', () => {
     const now = moment()
     const future = now.clone().add(700, 'seconds')
     cy.clock(future.toDate())
@@ -50,6 +53,23 @@ describe('Wrap timer in provider and set data the component needs to use when mo
 
     cy.contains('11.40')
 
+  });
+
+  it('formats the time', () => {
+    cy.mount(
+      <SudokuProvider>
+        <section className='status'>
+          <Timer />
+        </section>
+      </SudokuProvider>
+    )
+    expect(formatTimeI({})).to.equal('00:00')
+    expect(formatTimeI({ seconds: 3 })).to.equal('00:03')
+    expect(formatTimeI({ minutes: 1 })).to.equal('01:00')
+    expect(formatTime({ minutes: 1, seconds: 30 })).to.equal('01:30')
+
+    cy.document()
+      .invoke('write', expect(formatTimeI({ seconds: 3 })).to.equal('00:03'))
   });
 
 });
