@@ -55,6 +55,9 @@ describe('Wrap timer in provider and set data the component needs to use when mo
 });
 
 describe('writing a unit test for the formatTime fn in Timer.tsx', () => {
- 
+  /**
+   * TODO:
+   * Watch chapter 28. Refactoring again, and add the Unit test. Code is adjusted in Timer.tsx
+   */
 
 });

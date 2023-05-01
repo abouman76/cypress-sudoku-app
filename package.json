@@ -24,7 +24,6 @@
     "cy:open": "cypress open",
     "cy:e2e": "cypress open --e2e --browser chrome",
     "dev": "start-server-and-test start http://localhost:3000"
-    
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,7 +42,7 @@
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.8",
-    "cypress": "^12.8.1",
+    "cypress": "^12.11.0",
     "start-server-and-test": "^1.15.4"
   }
 }
